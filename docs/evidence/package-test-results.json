@@ -1,0 +1,11 @@
+{
+  "passed": 5,
+  "checks": [
+    "Archive contains no session, scratch files, or compiler outputs",
+    "Shipped native executable core self-check",
+    "Shipped GUI launches and runs both packaged workers",
+    "Packaged field is finite and nontrivial",
+    "Release preserves persisted source bytes"
+  ],
+  "note": "Smoke process terminated by harness after startup; controlled close is verified by the integration suite."
+}

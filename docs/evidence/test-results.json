@@ -1,0 +1,28 @@
+{
+  "passed": 22,
+  "checks": [
+    "Pony topology 0 process exit",
+    "Pony topology 0 source ordering and shape",
+    "Pony topology 0 all geodesics match independent BFS",
+    "Pony topology 1 process exit",
+    "Pony topology 1 source ordering and shape",
+    "Pony topology 1 all geodesics match independent BFS",
+    "Pony topology 2 process exit",
+    "Pony topology 2 source ordering and shape",
+    "Pony topology 2 all geodesics match independent BFS",
+    "Invalid message 3/0,0,1",
+    "Invalid message 0/64,0,1",
+    "Invalid message 0/0,48,1",
+    "Invalid message 0/0,0,0",
+    "Invalid message 0/bad",
+    "Invalid message 0/",
+    "Invalid message 0/0,0,1;0,0,1;0,0,1;0,0,1;",
+    "Four concurrent worker processes with sixteen isolated source actors",
+    "Actor completion order does not affect output",
+    "Uiua shape and finite bounds",
+    "Uiua superposition matches independent scalar reference",
+    "Equal opposing waves cancel exactly",
+    "Uiua rejects malformed input"
+  ],
+  "seconds": 4.06
+}

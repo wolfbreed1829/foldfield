@@ -1,0 +1,37 @@
+state 0 0 0 0 0
+status Click the fabric to create the first wave.
+event 1
+state 0 0 1 1 0
+status Saved.  Click to add a source; T folds the surface; Z undoes.
+event 2
+state 0 0 2 2 0
+status Saved.  Click to add a source; T folds the surface; Z undoes.
+event 84
+state 1 0 2 3 0
+status Saved.  Click to add a source; T folds the surface; Z undoes.
+event 84
+state 2 0 2 4 0
+status Saved.  Click to add a source; T folds the surface; Z undoes.
+event 77
+state 2 1 2 5 0
+status Saved.  Click to add a source; T folds the surface; Z undoes.
+event 1
+state 2 1 4 6 0
+status Saved.  Click to add a source; T folds the surface; Z undoes.
+event 90
+state 2 1 2 5 1
+status Saved.  Click to add a source; T folds the surface; Z undoes.
+event 89
+state 2 1 4 6 0
+status Saved.  Click to add a source; T folds the surface; Z undoes.
+event 72
+event 72
+event 69
+status Bitmap saved in the exports folder beside Foldfield.exe.
+event 82
+state 2 1 0 7 0
+status Saved.  Click to add a source; T folds the surface; Z undoes.
+event 90
+state 2 1 4 6 1
+status Saved.  Click to add a source; T folds the surface; Z undoes.
+event 0

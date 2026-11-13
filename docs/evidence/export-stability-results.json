@@ -1,0 +1,60 @@
+{
+  "passed": 5,
+  "runs": [
+    {
+      "run": 1,
+      "exit": 0,
+      "files": [
+        [
+          "foldfield-20261113-183640-572.bmp",
+          3600022
+        ]
+      ],
+      "export_success": true
+    },
+    {
+      "run": 2,
+      "exit": 0,
+      "files": [
+        [
+          "foldfield-20261113-183649-602.bmp",
+          3600022
+        ]
+      ],
+      "export_success": true
+    },
+    {
+      "run": 3,
+      "exit": 0,
+      "files": [
+        [
+          "foldfield-20261113-183655-852.bmp",
+          3600022
+        ]
+      ],
+      "export_success": true
+    },
+    {
+      "run": 4,
+      "exit": 0,
+      "files": [
+        [
+          "foldfield-20261113-183701-403.bmp",
+          3600022
+        ]
+      ],
+      "export_success": true
+    },
+    {
+      "run": 5,
+      "exit": 0,
+      "files": [
+        [
+          "foldfield-20261113-183707-287.bmp",
+          3600022
+        ]
+      ],
+      "export_success": true
+    }
+  ]
+}

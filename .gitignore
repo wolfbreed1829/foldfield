@@ -1,0 +1,8 @@
+toolchains/
+.koka/
+build/
+dist/
+*.obj
+*.pdb
+*.ilk
+tests/tmp/
