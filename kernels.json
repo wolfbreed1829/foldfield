@@ -1,5 +1,6 @@
 {
   "format": "FFK1",
+  "basis": "sin",
   "topologies": 3,
   "canonical_source_rows": 48,
   "cells_per_source": 3072,
