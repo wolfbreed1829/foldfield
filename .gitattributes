@@ -4,3 +4,5 @@
 *.zip binary
 *.exe binary
 *.dll binary
+*.gz binary
+web/dist/core/** linguist-generated=true

@@ -1,5 +1,7 @@
 # Language boundaries
 
+The table and missing-worker behavior below describe the native edition. Its shared model, parser, and gesture effect now live in `src/domain.kk`; native orchestration remains in `src/foldfield.kk`. In the browser edition, `web/core.kk` owns history and superposition at runtime, while Pony and `web/kernels.ua` generate the immutable wave bank at build time. The handwritten JavaScript adapter owns browser IO and rendering. See [BROWSER.md](BROWSER.md).
+
 | Component | Actual responsibility | Why |
 |---|---|---|
 | `src/foldfield.kk` | Application entry point, source model, multi-shot gesture interpretation, history, validation, transaction ordering, persistence encoding | Effects express one intent with different continuations; immutable values make reversal explicit |

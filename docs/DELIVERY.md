@@ -1,5 +1,7 @@
 # Delivery
 
+Browser edition: https://wolfbreed1829.github.io/foldfield/. Static deployment artifact: `web/dist/`. Complete browser source, build instructions, and verification are described in [BROWSER.md](BROWSER.md). The original native delivery below remains available as release v0.1.0.
+
 Foldfield experimental release 0.1.0.
 
 - Runtime folder: `dist/Foldfield/`

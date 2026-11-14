@@ -22,7 +22,7 @@ try {
   Copy-Item (Join-Path $app 'SHA256SUMS.txt') dist\Foldfield -Force
   $source=Join-Path $stage 'Foldfield-source'
   New-Item -ItemType Directory $source | Out-Null
-  foreach($name in @('src','scripts','tests','docs','probes','licenses')){Copy-Item -LiteralPath $name -Destination $source -Recurse}
+  foreach($name in @('src','web','scripts','tests','docs','probes','licenses')){Copy-Item -LiteralPath $name -Destination $source -Recurse}
   Copy-Item README.md,.gitignore,.gitattributes $source
   Compress-Archive -LiteralPath $source -DestinationPath dist\Foldfield-source.zip -Force
   Get-Item dist\Foldfield-windows-x64.zip,dist\Foldfield-source.zip | Select-Object Name,Length

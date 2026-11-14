@@ -1,5 +1,7 @@
 # Build
 
+For the browser edition, use [BROWSER.md](BROWSER.md) after installing the toolchains below. `scripts/build_web.ps1` builds the Pony producer, generates the Uiua wave atlas, compiles Koka to JavaScript, and packages `web/dist/`.
+
 ## Verified toolchain
 
 | Dependency | Version / role |

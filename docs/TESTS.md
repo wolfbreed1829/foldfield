@@ -1,5 +1,7 @@
 # Verification
 
+Browser addition: 22 core assertions and 23 actual Playwright workflow checks passed. Independent BFS comparisons covered 92,160 cells; actual native Pony/Uiua comparisons covered another 18,432 cells, with a maximum absolute difference below 4.63e-8. Desktop/mobile screenshots and the PNG export were inspected. The shared-domain refactor also passed all 28 native integration assertions again. See [BROWSER.md](BROWSER.md) and the browser reports in `evidence/`.
+
 Tests ran on Windows 11 x64 on 2026-11-13. Results below refer to executable computation, not mocked workers.
 
 | Command | Result |

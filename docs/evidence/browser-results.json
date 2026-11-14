@@ -1,0 +1,30 @@
+{
+  "passed": 23,
+  "checks": [
+    "Empty page loads verified kernels",
+    "Canvas click adds positive source",
+    "Right click adds negative source",
+    "Surface button and keyboard reach Mobius",
+    "Mirror button creates two sources",
+    "Clear button empties field",
+    "Undo restores sources",
+    "Redo clears field",
+    "Share link carries actual model",
+    "Clipboard action gives a result",
+    "Shared link restores four sources",
+    "Keyboard opposed placement creates signed pair",
+    "Edited shared field removes stale hash",
+    "Reload restores edited field and undo history",
+    "PNG download completes",
+    "Help opens dialog",
+    "Escape closes help",
+    "Mobile viewport has no horizontal overflow",
+    "Mobile negative control works",
+    "Bad wave asset is rejected visibly",
+    "Retry recovers after invalid asset",
+    "Malformed saved state recovers visibly",
+    "No uncaught browser errors"
+  ],
+  "errors": [],
+  "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}

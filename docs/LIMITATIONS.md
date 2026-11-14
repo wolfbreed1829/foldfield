@@ -1,5 +1,7 @@
 # Limitations
 
+These are native-edition limitations. The [browser edition](BROWSER.md) adds cross-platform browser access, PNG export, keyboard placement, persistent history, and pattern links. It requires a current browser and uses a build-time Pony/Uiua atlas with small Float32 rounding differences. Physical mobile devices and screen readers have not been tested.
+
 - Verified on Windows 11 x64. Other operating systems are unsupported. Windows N editions may need the Media Feature Pack for the upstream Uiua binary.
 - Live desktop mouse/keyboard automation was unavailable: both available computer-use paths reported a missing native pipe. Actual Win32 handlers were tested with in-process messages, and the shared renderer's BMP output was visually inspected. This does not verify physical input injection or screen-reader behavior.
 - The native adapter uses ANSI Win32 paths. Use a short, writable path containing characters supported by the Windows system code page; ASCII paths are the portable choice. Long paths and arbitrary Unicode paths are unsupported.

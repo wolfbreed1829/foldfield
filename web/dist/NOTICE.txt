@@ -1,0 +1,4 @@
+Foldfield browser edition.
+Includes Koka 3.2.9 generated runtime modules, Copyright Microsoft Corporation, licensed under Apache-2.0; see KOKA-LICENSE.txt.
+Wave data generated with Pony 0.78.2 and Uiua 0.19.1.
+Source and further notices: https://github.com/wolfbreed1829/foldfield

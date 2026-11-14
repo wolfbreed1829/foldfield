@@ -1,5 +1,7 @@
 # User guide
 
+For browser play, open https://wolfbreed1829.github.io/foldfield/. Tap the fabric, use the visible controls, export PNGs, or use Share pattern to send the composition. Browser-specific controls and storage behavior are documented in [BROWSER.md](BROWSER.md). The instructions below cover the native Windows edition.
+
 1. Extract the entire package into a writable folder and open `Foldfield.exe`.
 2. Click the fabric to place a positive source. Right click elsewhere to place a negative source.
 3. Press T to join the horizontal edges into a cylinder, then again to twist the join into a Mobius strip. The same sources produce different fields.

@@ -1,0 +1,32 @@
+{
+  "passed": 22,
+  "checks": [
+    "Atlas integrity and header",
+    "Koka multi-shot effects and shared parser",
+    "Empty field is exactly zero",
+    "Mirror gesture creates two sources",
+    "Opposed gesture preserves polarity",
+    "Clear removes sources",
+    "Undo restores complete model",
+    "Redo reapplies clear",
+    "New edit clears redo",
+    "Saved history and linked model round trips",
+    "Reject malformed model bad",
+    "Reject malformed model FOLDFIELD1|3|0|",
+    "Reject malformed model FOLDFIELD1|0|0|64,1,1",
+    "Reject malformed model FOLDFIELD1|0|0|1,1,0",
+    "Reject malformed model FOLDFIELD1|0|0|0,0,1;0,0",
+    "Paired placement is atomic at source limit",
+    "History bounded at 128",
+    "Coincident opposing waves cancel exactly",
+    "Topology 0: translated atlas agrees with independent BFS and wave law",
+    "Topology 1: translated atlas agrees with independent BFS and wave law",
+    "Topology 2: translated atlas agrees with independent BFS and wave law",
+    "Compiled Koka browser field agrees with Pony + Uiua native field"
+  ],
+  "compared_cells": 92160,
+  "native_compared_cells": 18432,
+  "maximum_scalar_error": 4.9250864497807356e-8,
+  "maximum_native_error": 4.621366489487855e-8,
+  "tolerance": 0.000001
+}
