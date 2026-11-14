@@ -1,0 +1,13 @@
+{
+  "passed": 3,
+  "checks": [
+    "Sixteen-source field animates continuously",
+    "Speed control changes actual phase progression",
+    "Motion preserves sixteen sources and empty undo history"
+  ],
+  "frames_in_sample": 27,
+  "sample_ms": 1004.6999999880791,
+  "quarter_speed_phase": 0.21679000000000814,
+  "double_speed_phase": 1.7340399999999674,
+  "method": "Visible lifecycle and emulated focus enabled for the automation window; count actual canvas draws during one second."
+}

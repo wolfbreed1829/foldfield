@@ -25,7 +25,7 @@ async (page) => {
   await page.locator('#redo').click();check('Redo clears field',(await scene()).sources.length===0);await page.keyboard.press('z');
   await page.locator('#share').click();const shared=await page.locator('#pattern-link').inputValue();
   check('Share link carries actual model',decodeURIComponent(shared.split('#')[1]).startsWith('FOLDFIELD1|2|1|'));
-  await page.locator('#copy-link').click();check('Clipboard action gives a result',(await page.locator('#copy-status').innerText()).length>0);await page.keyboard.press('Escape');
+  await page.locator('#copy-link').click();await page.waitForFunction(()=>document.getElementById('copy-status').textContent.length>0);check('Clipboard action gives a result',(await page.locator('#copy-status').innerText()).length>0);await page.keyboard.press('Escape');
   await page.evaluate(()=>localStorage.removeItem('foldfield.browser.v1'));await page.goto(shared);await ready();
   check('Shared link restores four sources',await page.locator('#count').innerText()==='04');
   await page.locator('#rule').click();await canvas.focus();await page.keyboard.press('ArrowRight');await page.keyboard.press('Shift+Enter');
@@ -38,7 +38,7 @@ async (page) => {
   await page.screenshot({path:out+'/browser-desktop.png',fullPage:true});
   await page.setViewportSize({width:390,height:844});
   check('Mobile viewport has no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-  await page.locator('#negative').click();box=await canvas.boundingBox();await canvas.click({position:{x:box.width*.55,y:box.height*.45}});
+  await page.locator('#negative').click();box=await canvas.boundingBox();await canvas.click({position:{x:box.width*.15,y:box.height*.8}});
   check('Mobile negative control works',(await scene()).sources[6][2]===-1);
   await page.screenshot({path:out+'/browser-mobile.png',fullPage:true});
   await page.route('**/kernels.bin.gz',route=>route.fulfill({status:200,body:'corrupt'}));

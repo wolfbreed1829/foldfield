@@ -1,7 +1,8 @@
 {
-  "passed": 22,
+  "passed": 35,
   "checks": [
     "Atlas integrity and header",
+    "Cosine atlas integrity and basis",
     "Koka multi-shot effects and shared parser",
     "Empty field is exactly zero",
     "Mirror gesture creates two sources",
@@ -19,14 +20,28 @@
     "Paired placement is atomic at source limit",
     "History bounded at 128",
     "Coincident opposing waves cancel exactly",
+    "Move changes only the selected source",
+    "Move undo and redo preserve the exact model",
+    "No-op and out-of-bounds edits leave history intact",
+    "Delete preserves remaining source polarity and order",
+    "Deletion undo restores the moved source",
+    "Editing after undo discards redo",
+    "Delete last source gives an empty zero field",
+    "Opposing waves cancel at nonzero phase",
+    "Phase zero exactly matches original static rendering",
     "Topology 0: translated atlas agrees with independent BFS and wave law",
+    "Topology 0: animated field agrees with independent phased wave law",
     "Topology 1: translated atlas agrees with independent BFS and wave law",
+    "Topology 1: animated field agrees with independent phased wave law",
     "Topology 2: translated atlas agrees with independent BFS and wave law",
+    "Topology 2: animated field agrees with independent phased wave law",
     "Compiled Koka browser field agrees with Pony + Uiua native field"
   ],
   "compared_cells": 92160,
+  "animated_compared_cells": 368640,
   "native_compared_cells": 18432,
   "maximum_scalar_error": 4.9250864497807356e-8,
   "maximum_native_error": 4.621366489487855e-8,
+  "maximum_animation_error": 4.925086471985196e-8,
   "tolerance": 0.000001
 }

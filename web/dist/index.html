@@ -7,8 +7,8 @@
   <meta name="description" content="An interactive wave loom. Plant signed sources, fold the surface, and weave interference on an open sheet, cylinder, or Möbius strip.">
   <title>Foldfield — a topological wave loom</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%230f1818'/%3E%3Cpath d='M5 12Q15 2 20 12T35 12M5 20Q15 10 20 20T35 20M5 28Q15 18 20 28T35 28' fill='none' stroke='%23e8ac51' stroke-width='2'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css">
-  <script type="module" src="./app.mjs"></script>
+  <link rel="stylesheet" href="./style.css?v=3">
+  <script type="module" src="./app.mjs?v=3"></script>
 </head>
 <body>
 <main class="instrument">
@@ -26,6 +26,18 @@
     <div id="failure" class="failure" hidden role="alert"><p id="failure-message"></p><button id="retry">Retry loading</button></div>
   </section>
   <div class="readout"><span><b id="count">00</b> SOURCES <span class="separator">/</span> 64 × 48 CELLS</span><span id="seam">EDGES FREE</span></div>
+  <div class="instrument-tools">
+    <div class="motion" role="group" aria-label="Wave motion">
+      <button id="play" disabled aria-pressed="false" aria-keyshortcuts="P"><span id="play-label">Play</span> <kbd>P</kbd></button>
+      <label for="speed">Speed</label><input id="speed" type="range" min="0.25" max="2" step="0.25" value="1" disabled aria-valuetext="1 times normal speed"><output id="speed-value" for="speed">1×</output>
+      <button id="rewind" disabled title="Pause and return to the starting wave">Rewind</button>
+    </div>
+    <div class="source-edit" role="group" aria-label="Edit a source">
+      <select id="source-picker" disabled aria-label="Selected source"><option value="-1">Select a source</option></select>
+      <button id="delete-source" disabled aria-keyshortcuts="Delete">Delete source</button>
+    </div>
+  </div>
+  <p id="selection-hint" class="selection-hint" aria-live="polite">Drag a source to move it. Select one to delete.</p>
   <div class="controls">
     <div class="polarity" role="group" aria-label="Source polarity"><button id="positive" aria-pressed="true" disabled><b>+</b> Positive</button><button id="negative" aria-pressed="false" disabled><b>−</b> Negative</button></div>
     <div class="actions">
@@ -34,16 +46,16 @@
     </div>
   </div>
   <p id="status" class="status" aria-live="polite">Preparing the instrument.</p>
-  <footer><p id="instructions">Tap to place. Right click to oppose. <span>Everything is computed; every edit can be undone.</span></p><a href="https://github.com/wolfbreed1829/foldfield" target="_blank" rel="noopener">Source &amp; experiment <span aria-hidden="true">↗</span></a></footer>
+  <footer><p id="instructions">Tap to plant. Drag to shape. Press Play to set it in motion. <span>Every edit can be undone.</span></p><a href="https://github.com/wolfbreed1829/foldfield" target="_blank" rel="noopener">Source &amp; experiment <span aria-hidden="true">↗</span></a></footer>
 </main>
 <dialog id="guide" aria-labelledby="guide-title">
   <div class="dialog-top"><p class="eyebrow">FIELD NOTES</p><button class="close" aria-label="Close help">×</button></div>
   <h2 id="guide-title">How to fold a field</h2>
   <p>Every source sends a signed wave across a grid. Change the way its edges connect, and the same sources weave a different field.</p>
-  <dl><dt>Plant</dt><dd>Tap or click to add a source. Choose Positive or Negative; right click always adds a negative source.</dd><dt>Fold <kbd>T</kbd></dt><dd>Open sheet → cylinder → Möbius strip. The gold edge arrows show the join and its twist.</dd><dt>Interpret <kbd>M</kbd></dt><dd>Single → mirror pair → opposed pair. This changes what your next gesture creates.</dd><dt>Explore <kbd>Z</kbd> <kbd>Y</kbd></dt><dd>Undo and redo, including changes to the surface. Clear <kbd>R</kbd> is also reversible.</dd><dt>Keep</dt><dd>Edits save in this browser. Export <kbd>E</kbd> downloads a PNG. Share pattern creates a link to the current field.</dd><dt>Keyboard</dt><dd>Focus the fabric, move with the arrow keys, and press Enter or Space to place a source. Shift + Enter opposes it.</dd></dl>
+  <dl><dt>Plant</dt><dd>Tap or click an empty spot to add a source. Choose Positive or Negative; right click always adds a negative source.</dd><dt>Shape</dt><dd>Drag a source to move it. Click one or choose it in the source menu, then use Delete source. Each drag is one undoable edit. Escape cancels a drag or deselects a source. Mirrored sources can be moved individually.</dd><dt>Move <kbd>P</kbd></dt><dd>Play animates the waves. Adjust Speed, pause at any moment, or Rewind to the starting wave. Motion starts paused, including when opening a link.</dd><dt>Fold <kbd>T</kbd></dt><dd>Open sheet → cylinder → Möbius strip. The gold edge arrows show the join and its twist.</dd><dt>Interpret <kbd>M</kbd></dt><dd>Single → mirror pair → opposed pair. This changes what your next gesture creates.</dd><dt>Explore <kbd>Z</kbd> <kbd>Y</kbd></dt><dd>Undo and redo include moving and deleting sources. Clear <kbd>R</kbd> is also reversible. Animation does not add undo states.</dd><dt>Keep</dt><dd>Edits save in this browser. Export <kbd>E</kbd> pauses and downloads the current wave as a PNG. Share pattern pauses and creates a link including that moment and speed.</dd><dt>Keyboard</dt><dd>Focus the fabric. Arrows move the cursor, or nudge a selected source. Enter or Space adds a source; Shift + Enter adds a negative one. Delete removes the selected source. Escape deselects it. The source menu also lets you select overlapping sources.</dd></dl>
   <p class="note">Sixteen sources. A 64 × 48 graph. This is a mathematical instrument, not a physical wave solver. Pony and Uiua create the wave bank; compiled Koka interprets gestures and combines it in your browser.</p>
 </dialog>
-<dialog id="share-dialog" aria-labelledby="share-title"><div class="dialog-top"><p class="eyebrow">A FIELD TO PASS ON</p><button class="close" aria-label="Close share dialog">×</button></div><h2 id="share-title">Share this pattern</h2><p>The link carries the sources, surface, and gesture rule. No account or upload is needed.</p><label for="pattern-link">Pattern link</label><input id="pattern-link" readonly><button id="copy-link" class="primary">Copy link</button><p id="copy-status" class="status" aria-live="polite"></p></dialog>
+<dialog id="share-dialog" aria-labelledby="share-title"><div class="dialog-top"><p class="eyebrow">A FIELD TO PASS ON</p><button class="close" aria-label="Close share dialog">×</button></div><h2 id="share-title">Share this pattern</h2><p>The link carries the sources, surface, gesture rule, and this paused moment. Press Play to continue it. No account or upload is needed.</p><label for="pattern-link">Pattern link</label><input id="pattern-link" readonly><button id="copy-link" class="primary">Copy link</button><p id="copy-status" class="status" aria-live="polite"></p></dialog>
 <noscript>This interactive instrument needs JavaScript. The native Windows version and complete source are available on <a href="https://github.com/wolfbreed1829/foldfield">GitHub</a>.</noscript>
 </body>
 </html>

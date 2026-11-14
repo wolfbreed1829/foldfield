@@ -45,6 +45,29 @@ pub fun from-link(text : string) : string
 pub fun share(text : string) : string
   serialize(unpack(text).current)
 
+// A drag previews from the original snapshot; its final position commits once.
+fun edit-sources(sources : list<source>, index : int, px : int, py : int, remove : bool) : list<source>
+  match sources
+    [] -> []
+    Cons(s,rest) ->
+      if index == 0 then
+        if remove then rest else Cons(Source(px,py,s.sign),rest)
+      else Cons(s,edit-sources(rest,index - 1,px,py,remove))
+
+fun edit-source(text : string, index : int, px : int, py : int, remove : bool) : string
+  val h = unpack(text)
+  val m = h.current
+  if index < 0 || index >= m.sources.length || px < 0 || px > 63 || py < 0 || py > 47 then text else
+    val next = Model(m.topology,m.rule,edit-sources(m.sources,index,px,py,remove))
+    if serialize(next) == serialize(m) then text else
+      pack(History(next,Cons(m,h.past).take(128),[],1))
+
+pub fun move-source(text : string, index : int, px : int, py : int) : string
+  edit-source(text,index,px,py,False)
+
+pub fun remove-source(text : string, index : int) : string
+  edit-source(text,index,0,0,True)
+
 pub fun dispatch(text : string, event : int, x : int, y : int) : string
   val h = unpack(text)
   val m = h.current
@@ -77,6 +100,9 @@ pub fun describe(text : string) : string
 extern kernel(top : int, sy : int, dx : int, y : int) : ndet float64
   js inline "globalThis.foldfieldKernels[((#1*48+#2)*48+#4)*64+#3]"
 
+extern cosine-kernel(top : int, sy : int, dx : int, y : int) : ndet float64
+  js inline "globalThis.foldfieldCosines[((#1*48+#2)*48+#4)*64+#3]"
+
 fun amplitude(top : int, sources : list<source>, px : int, py : int) : ndet float64
   match sources
     [] -> 0.0
@@ -87,6 +113,24 @@ pub fun values(text : string) : ndet vector<float64>
   val m = unpack(text).current
   val scale = (max(1,m.sources.length)).float64.sqrt
   vector-init(3072,fn(i) amplitude(m.topology,m.sources,i % 64,i / 64) / scale)
+
+fun cosine-amplitude(top : int, sources : list<source>, px : int, py : int) : ndet float64
+  match sources
+    [] -> 0.0
+    Cons(s,rest) ->
+      s.sign.float64 * cosine-kernel(top,s.y,(px - s.x).abs,py) + cosine-amplitude(top,rest,px,py)
+
+pub fun cosine-values(text : string) : ndet vector<float64>
+  val m = unpack(text).current
+  val scale = (max(1,m.sources.length)).float64.sqrt
+  vector-init(3072,fn(i) cosine-amplitude(m.topology,m.sources,i % 64,i / 64) / scale)
+
+// sin(k*d - phase) = sin(k*d)*cos(phase) - cos(k*d)*sin(phase).
+// Superpose both bases only when sources change, then combine each frame here.
+pub fun frame(sines : vector<float64>, cosines : vector<float64>, phase : float64) : exn vector<float64>
+  val c = phase.cos
+  val s = phase.sin
+  vector-init(3072,fn(i) sines[i] * c - cosines[i] * s)
 
 pub fun check-core() : bool
   test-core()

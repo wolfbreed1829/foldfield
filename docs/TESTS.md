@@ -1,6 +1,6 @@
 # Verification
 
-Browser addition: 22 core assertions and 23 actual Playwright workflow checks passed. Independent BFS comparisons covered 92,160 cells; actual native Pony/Uiua comparisons covered another 18,432 cells, with a maximum absolute difference below 4.63e-8. Desktop/mobile screenshots and the PNG export were inspected. The shared-domain refactor also passed all 28 native integration assertions again. See [BROWSER.md](BROWSER.md) and the browser reports in `evidence/`.
+Browser edition: 35 core assertions, 23 original Playwright workflow checks, 32 editing/motion checks, and 3 playback-load checks pass. Independent BFS comparisons cover 92,160 static and 368,640 animated cells; actual native Pony/Uiua comparisons cover another 18,432 cells. The largest animated discrepancy is below 4.93e-8. Desktop/mobile screenshots and the PNG export were inspected. The earlier shared-domain refactor also passed all 28 native integration assertions again; the motion update changes browser-only code and assets. See [BROWSER.md](BROWSER.md) and the reports in `evidence/`.
 
 Tests ran on Windows 11 x64 on 2026-11-13. Results below refer to executable computation, not mocked workers.
 
@@ -24,6 +24,10 @@ The native test binary injects messages into the real window procedure. It share
 Machine-readable reports and the workflow log are under `docs/evidence/`. Assertion counts include process-exit checks and are not counts of independent user features. The release smoke test starts the actual shipped executable in an extracted folder, runs the packaged workers, and checks the reconstructed field without toolchain PATH entries. Its process is terminated by the harness after startup; clean window close is exercised by the integration suite.
 
 ## Failures found and repaired
+
+- Motion audit found that pausing during a drag could persist a preview. Playback commands now cancel unfinished drags before saving; the browser test verifies the original snapshot is retained.
+- The clipboard regression check raced its asynchronous result. It now waits for visible completion. The mobile placement regression now taps an empty spot because tapping a source intentionally selects it.
+- An initial animation performance probe found an occluded automation window was throttling requestAnimationFrame. Activating lifecycle/focus restored continuous callbacks; the sixteen-source test then observed 27 draws in about one second. Motion, pause, and speed assertions passed.
 
 - Initial toolchain transfers stalled/reset. Official ranged downloads completed; extracted Pony entries passed ZIP CRC validation; Koka/Uiua archive SHA-256 matched published metadata.
 - Pony API/capability errors: replaced old Range construction with `Range.till`, gave split arrays explicit immutable capabilities, and transferred output as isolated strings.

@@ -6,7 +6,7 @@ A mathematical instrument for weaving interference fields on an open sheet, a cy
 
 ![Foldfield browser showing a computed Mobius interference fabric](docs/evidence/browser-desktop.png)
 
-The browser edition runs on GitHub Pages with no account or backend. Click or tap the fabric, change the surface or gesture rule, undo, and export a PNG. **Share pattern** creates a link to your current composition. Your edits and undo history stay in browser storage. A native Windows edition is also available.
+The browser edition runs on GitHub Pages with no account or backend. Click or tap to plant waves, drag sources to shape them, and select a source to delete it. **Play** sets the field in motion; adjust the speed or pause on a particular moment. Moving and deleting sources are undoable. Export a PNG or use **Share pattern** to send that paused moment. Your edits and undo history stay in browser storage. A native Windows edition is also available.
 
 Pony actors compute the canonical graph distances and Uiua transforms them into a compact wave bank during the browser build. Compiled Koka runs the gesture effects, model, history, and wave superposition in the browser. The original no-web constraint was explicitly lifted for this edition; Pony and Uiua are build-time dependencies here, not browser runtimes. See [browser architecture and verification](docs/BROWSER.md).
 

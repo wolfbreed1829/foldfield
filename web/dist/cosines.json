@@ -1,0 +1,14 @@
+{
+  "format": "FFK1",
+  "basis": "cos",
+  "topologies": 3,
+  "canonical_source_rows": 48,
+  "cells_per_source": 3072,
+  "values": 442368,
+  "float": "IEEE754 float32 little endian",
+  "uncompressed_bytes": 1769492,
+  "download_bytes": 20499,
+  "sha256": "b1f297f7ba05c25be23711293855e2bfd7e9afe93751e8b4e148ce0742772879",
+  "producer": "Pony 0.78.2 graph actors -> Uiua 0.19.1 wave arrays",
+  "index": "((topology*48+sourceY)*48+targetY)*64+abs(targetX-sourceX)"
+}

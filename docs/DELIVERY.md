@@ -2,6 +2,8 @@
 
 Browser edition: https://wolfbreed1829.github.io/foldfield/. Static deployment artifact: `web/dist/`. Complete browser source, build instructions, and verification are described in [BROWSER.md](BROWSER.md). The original native delivery below remains available as release v0.1.0.
 
+The browser update adds draggable and deletable sources, keyboard editing, Play/Pause, speed, Rewind, and paused-moment sharing/export. Its core and browser suites pass 93 checks. Moving and deleting remain undoable, and old saved models and links remain compatible.
+
 Foldfield experimental release 0.1.0.
 
 - Runtime folder: `dist/Foldfield/`
